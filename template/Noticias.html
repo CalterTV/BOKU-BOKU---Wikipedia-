@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOKU BOKU - WIKI - Noticias</title>
+    <link rel="icon" href="./images/BOKU wikipedia.PNG" type="image/png"> 
+    <link rel="stylesheet" href="style1.css"> <!-- Enlace a la hoja de estilo CSS -->
+</head>
+<body>
+<header class="header">
+    <nav class="navbar">
+        <ul class="menu-items">
+            <li><a href="index.html">Regresar</a></li>
+            <li><a href="Youtubers.html">Youtubers</a></li>
+            <li><a href="Curiosidades.html">Curiosidades</a></li>
+            <li><a href="Sobre.html">Sobre el juego</a></li>
+            <li><a href="skins.html">Skins</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Líneas a los lados -->
+<div class="side-line left-line"></div>
+<div class="side-line right-line"></div>
+
+<main class="news-item">
+    <div class="news-date" id="news-date">
+        10 de Octubre, 2024
+    </div>
+    
+    <div class="news-title" id="news-title">
+        NOTICIA: Actualización de capas
+    </div>
+    
+    <div class="news-image">
+        <img id="main-image" src="images/related 1.JPG" alt="Imagen principal de la noticia">
+    </div>
+
+    <div class="news-description" id="news-description">
+Ahora puedes dividir tu mundo en múltiples zonas, cada una con características únicas. Por ejemplo, puedes separar el exterior e interior de una casa como dos zonas independientes. Cada zona puede tener un fondo y clima diferentes. También puedes colocar hasta 30 muñecos o animales por zona y configurar listas de reproducción exclusivas para la rocola. Crea mundos más variados y personalizados con este nuevo bloque.
+    </div>
+    
+    <!-- Créditos -->
+    <div class="news-credit" id="news-credit">
+        <em class="dorado"></em>
+    </div>
+
+    <!-- Cuatro imágenes pequeñas relacionadas -->
+    <div class="news-related">
+        <div class="related-box">
+            <img src="images/related 2.JPG" alt="Noticia relacionada 1" onclick="swapContent(this, '10 Octubre 2024', 'NOTICIA: Actualización de música en MP3', 'Esta nueva actualización trae emocionantes novedades para personalizar aún más tu experiencia en el juego. Ahora podrás disfrutar de un tocadiscos que permite reproducir cualquier música en formato MP3, para ambientar tus espacios de manera única. Además, se han agregado ventanas coloridas, perfectas para darle un toque vibrante a tus construcciones, y nuevas hombreras que te permiten personalizar el aspecto de tu personaje, dándole un estilo más original y distintivo. ¡Explora todas estas opciones y dale vida a tus creaciones!', '')">
+        </div>
+        <div class="related-box">
+            <img src="images/related 3.JPG" alt="Noticia relacionada 2" onclick="swapContent(this, '1 Julio 2024', 'NOTICIA: Reword de la pagina web', 'En esta actualización, el creador de BOKU BOKU ha renovado la página web, incorporando una gran cantidad de nuevo contenido para los jugadores. Se han añadido fanarts creados por la comunidad, destacando el talento de los jugadores que comparten sus obras con todos. Además, la sección de información del juego ha sido ampliada, proporcionando más detalles y recursos útiles para quienes buscan mejorar su experiencia en el juego.', '')">
+        </div>
+        <div class="related-box">
+            <img src="images/related 4.JPG" alt="Noticia relacionada 3" onclick="swapContent(this, '1 febrero 2024', 'NOTICIA:BOKU BOKU x Discord', 'El servidor oficial de Discord de BOKU BOKU es el punto de encuentro perfecto para los jugadores de todo el mundo. Allí puedes mantenerte informado sobre las últimas noticias y actualizaciones del juego, compartir tus creaciones con la comunidad, recibir soporte técnico en caso de dudas o problemas, participar en eventos y competiciones organizados por otros jugadores, y conversar sobre estrategias, ideas y personalizaciones. Además, es una excelente oportunidad para interactuar directamente con los desarrolladores, aportar sugerencias y disfrutar de un espacio donde los fans del juego pueden conectarse e inspirarse mutuamente. Únete a través del enlace oficial y sé parte de esta comunidad creativa y activa.', '')">
+        </div>
+        <div class="related-box">
+            <img src="images/related.JPG" alt="Noticia relacionada 4" onclick="swapContent(this, '29 febrero 2024', 'NOTICIA:', 'Descripción de la noticia 4', '')">
+        </div>
+    </div>
+</main>
+
+<!-- Contenedor del botón de Discord (inicialmente oculto) -->
+<div id="discord-button-container" class="discord-button-container">
+    <a href="https://discord.gg/tu-enlace-aqui" target="_blank">
+        <button class="discord-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Discord_logo.svg" alt="Discord Logo" class="discord-icon">
+        </button>
+    </a>
+</div>
+
+    <!-- Vinculación del archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+function swapContent(smallImg, newDate, newTitle, newDescription, newCredit) {
+    // Guardar el contenido de la imagen grande
+    const mainImage = document.getElementById("main-image");
+    const mainDate = document.getElementById("news-date").innerText;
+    const mainTitle = document.getElementById("news-title").innerText;
+    const mainDescription = document.getElementById("news-description").innerText;
+    const mainSrc = mainImage.src;
+    const mainCredit = document.getElementById("news-credit").innerText;  // Guardar los créditos
+
+    // Intercambiar contenido de la imagen grande con la imagen pequeña seleccionada
+    mainImage.src = smallImg.src;
+    document.getElementById("news-date").innerText = newDate;
+    document.getElementById("news-title").innerText = newTitle;
+    document.getElementById("news-description").innerText = newDescription;
+
+    // Actualizar los créditos
+    document.getElementById("news-credit").innerHTML = `<em class="dorado">${newCredit}</em>`;  // Cambiar los créditos
+
+    // Colocar el contenido de la imagen grande anterior en la imagen pequeña
+    smallImg.src = mainSrc;
+    smallImg.setAttribute("onclick", `swapContent(this, '${mainDate}', '${mainTitle}', '${mainDescription}', '${mainCredit}')`);
+}
+</script>
+</body>
+</html>
